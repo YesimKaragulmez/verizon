@@ -6,6 +6,12 @@ import com.verizon.ui.login.utilities.ConfigurationReader;
 import com.verizon.ui.login.utilities.Driver;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +28,7 @@ public class Verizon_Step_Def {
     @Then("user hoverover on the phones")
     public void user_hoverover_on_the_phones() throws InterruptedException {
         Driver.getDriver().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        BrowserUtils.hover(verizon_pages.phonesHoverOver);
+        BrowserUtils.hover(verizon_pages.shopHoverOver);
 
     }
 
@@ -33,35 +39,35 @@ public class Verizon_Step_Def {
 
     }
 
-    @Given("clicks the phone")
-    public void clicks_the_phone() throws InterruptedException {
+
+    @Then("user choose the galaksi note{int}+")
+    public void user_choose_the_galaksi_note(Integer int1) {
         //Assert.assertTrue(verizon_pages.samsungNote10Price.isDisplayed());
         Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         // BrowserUtils.waitForClickablility(verizon_pages.samsungNote10,500).click();
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 50);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@aria-label='Samsung Galaxy Note10+']"))).click();
 
-        verizon_pages.samsungNote10.click();
     }
 
 //77477
 
-    @Then("user choose the Auro glow colour")
-    public void user_choose_the_Auro_glow_colour() throws InterruptedException {
-        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-        //   BrowserUtils.waitForClickablility(verizon_pages.colour,3).click();
-        verizon_pages.colour.click();
-
-    }
-
     @Then("user clicks the continue button")
     public void user_clicks_the_continue_button() {
         // BrowserUtils.waitForClickablility(verizon_pages.continueButton,3).click();
-
-        //  verizon_pages.continueButton.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        verizon_pages.continueButton.click();
     }
 
     @Then("user enter the zipcode")
     public void user_enter_the_zipcode() {
+
+       verizon_pages.zipcode.clear();
+       verizon_pages.zipcode.sendKeys("77477"+ Keys.ENTER);
 
     }
 

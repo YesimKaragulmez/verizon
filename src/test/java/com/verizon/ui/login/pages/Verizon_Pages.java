@@ -6,27 +6,33 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Verizon_Pages {
-    //    @FindBy(xpath = "//button[text()='Phones list']")
-//    public WebElement phonesHoverOver;
-    @FindBy(xpath = "(//a[text()='Smartphones'])[1]")
+    public Verizon_Pages(){
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
+    @FindBy(id= "gnav20-Shop-L1")
+    public WebElement shopHoverOver;
+
+    @FindBy(partialLinkText = "Smartphones")
     public WebElement smartPhones;
-    @FindBy(xpath = "(//button[@aria-expanded='false'])[1]")
-    public WebElement phonesHoverOver;
+
+
     @FindBy(xpath = "//div[text()='$39.58/mo']")
     public WebElement price;
 
     //    @FindBy(xpath = "//a[contains(@id,'thirdLevel00')]")
 //    public WebElement smartPhones;
-    @FindBy(xpath = "//div[@id=\"tile_dev12240064\"]//div[@class='NHaasTX75Bd marginBottom5']//span")
+   // @FindBy(xpath = "//div[@id=\"tile_dev12240064\"]//div[@class='NHaasTX75Bd marginBottom5']//span")
+    @FindBy(xpath = "(//img[@aria-hidden='true'])[14]")
     public WebElement samsungNote10;
-    @FindBy(xpath = "//div[@style='background-color: rgb(215, 215, 215);']")
+
+    @FindBy(xpath = "//div[@class='positionRelative color-swatch-selected borderRadius50 cursorPointer']")
     public WebElement colour;
-    @FindBy(xpath = "//button[@id='ATC-Btn']")
+
+    @FindBy(id = "ATC-Btn")
     public WebElement continueButton;
 
+    @FindBy(id = "zipcode")
+    public WebElement zipcode;
 
-    public Verizon_Pages() {
 
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
 }
